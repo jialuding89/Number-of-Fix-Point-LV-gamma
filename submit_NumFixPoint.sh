@@ -15,7 +15,7 @@
 #SBATCH --array=0-19                           # adjust to (len(K_VALUES)-1)
 #SBATCH --ntasks=1
 #SBATCH --cpus-per-task=4                      # numba parallel threads
-#SBATCH --mem=8G
+#SBATCH --mem=32G
 #SBATCH --time=02:00:00
 #SBATCH --partition=cpu
 #SBATCH --mail-user=k23017508@kcl.ac.uk
