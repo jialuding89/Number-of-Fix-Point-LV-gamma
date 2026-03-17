@@ -61,9 +61,9 @@ results    = data["num_fixed_points"]
 theta      = float(data["theta"][0])
 N_species  = int(data["N_species"][0])
 iterations = int(data["iterations"][0])
+n_sims     = int(data["n_sims"][0]) if "n_sims" in data else 10_000
 
 # Normalise: proportion of initial conditions converging to distinct outcomes
-n_sims  = 10_000
 fp_norm = results / n_sims
 
 # ---------------------------------------------------------------------------

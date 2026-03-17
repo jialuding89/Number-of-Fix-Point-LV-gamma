@@ -62,6 +62,7 @@ np.savez(
     theta=np.array([theta]),
     N_species=np.array([N_species]),
     iterations=np.array([iterations]),
+    n_sims=np.array([n_sims]),
     num_fixed_points=np.array([num_fp]),
 )
 

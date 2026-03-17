@@ -71,7 +71,8 @@ for fpath in files:
     num_fp    = int(data["num_fixed_points"][0])
     N_species = int(data["N_species"][0])
     iters     = int(data["iterations"][0])
-    data_by_group[(theta, N_species, iters)].append((k, num_fp))
+    n_sims    = int(data["n_sims"][0]) if "n_sims" in data else 10_000
+    data_by_group[(theta, N_species, iters, n_sims)].append((k, num_fp))
 
 # ---------------------------------------------------------------------------
 # Plot
@@ -81,13 +82,12 @@ markers = ["o", "s", "^", "D", "v", "P", "*"]
 
 fig, ax = plt.subplots(figsize=(10, 7))
 
-for idx, ((theta, S, IT), pairs) in enumerate(sorted(data_by_group.items())):
+for idx, ((theta, S, IT, n_sims), pairs) in enumerate(sorted(data_by_group.items())):
     pairs_sorted = sorted(pairs, key=lambda x: x[0])
     k_arr  = np.array([p[0] for p in pairs_sorted])
     fp_arr = np.array([p[1] for p in pairs_sorted])
 
-    # Normalise: proportion of initial conditions that lead to distinct fixed points
-    n_sims  = 10_000
+    # Normalise: proportion of initial conditions that lead to distinct outcomes
     fp_norm = fp_arr / n_sims
 
     color  = colors[idx % len(colors)]
