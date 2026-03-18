@@ -15,8 +15,8 @@
 #SBATCH --array=0-19                           # adjust to (len(K_VALUES)-1)
 #SBATCH --ntasks=1
 #SBATCH --cpus-per-task=4                      # numba parallel threads
-#SBATCH --mem=32G
-#SBATCH --time=02:00:00
+#SBATCH --mem=256G
+#SBATCH --time=48:00:00
 #SBATCH --partition=cpu
 #SBATCH --mail-user=k23017508@kcl.ac.uk
 #SBATCH --mail-type=END,FAIL
@@ -63,7 +63,7 @@ K_VALUES=(0.1 0.42 0.74 1.05 1.37 1.68 2.0 2.32 2.63 2.95 \
 THETA_VALUES=(0.16)           # add more values here if needed
 
 # Fixed simulation parameters
-S=50                          # total number of species
+S=5000                          # total number of species
 IT=100000                     # total number of integration steps (IT)
 N_SIMS=10000                  # number of trajectories per run
 
