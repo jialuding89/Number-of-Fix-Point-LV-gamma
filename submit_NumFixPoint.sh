@@ -63,7 +63,7 @@ K_VALUES=(0.1 0.42 0.74 1.05 1.37 1.68 2.0 2.32 2.63 2.95 \
 THETA_VALUES=(0.16)           # add more values here if needed
 
 # Fixed simulation parameters
-S=5000                          # total number of species
+S=1000                          # total number of species
 IT=100000                     # total number of integration steps (IT)
 N_SIMS=10000                  # number of trajectories per run
 
