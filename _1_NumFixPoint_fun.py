@@ -25,11 +25,13 @@ def simulate_trajectories(k_val, theta, N_species, n_sims, iterations, dt=0.01):
     r = np.ones(N_species, dtype=np.float64)
 
     # Interaction matrix drawn from Gamma(k, theta); self-interaction set to zero
+    # ← 每次调用这个函数都会生成一个新的 alpha 矩阵
     alpha = np.random.gamma(k_val, theta, size=(N_species, N_species))
     for i in range(N_species):
         alpha[i, i] = 0.0
 
     # Random initial conditions uniformly distributed in (0.01, 1.0)
+    # ← 10,000 条轨迹都跑在同一个 alpha 上
     N = np.random.uniform(0.01, 1.0, size=(n_sims, N_species))
 
     # Euler integration
