@@ -1,5 +1,5 @@
 """
-_2_1_NumFixPoint_forloop.py
+_2_1_NumFixPoint_forloop_GreedyClustering.py
 ---------------------------
 Sweep over a range of k values at a fixed theta, count the number of distinct
 fixed-point attractors for each (k, theta) pair, and save the results to a
@@ -11,7 +11,7 @@ Output filename convention:
 
 import numpy as np
 from tqdm import tqdm
-from _1_NumFixPoint_fun import simulate_trajectories, count_distinct_attractors
+from _1_NumFixPoint_fun_GreeadyClustering import simulate_trajectories, count_distinct_attractors
 
 # ---------------------------------------------------------------------------
 # Simulation parameters
@@ -21,7 +21,7 @@ n_sims     = 1_000      # number of independent initial conditions per k value
 iterations = 10_000     # total number of Euler integration steps (IT)
 theta      = 0.16        # fixed scale parameter of the Gamma distribution
 
-k_values = np.linspace(0.001, 3.0, 5)   # k values to sweep
+k_values = np.linspace(0.001, 6.0, 5)   # k values to sweep
 
 # ---------------------------------------------------------------------------
 # Run simulations

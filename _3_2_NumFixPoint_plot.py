@@ -47,7 +47,7 @@ mpl.rcParams.update({
 # Configuration
 # ---------------------------------------------------------------------------
 RESULTS_DIR  = "."
-GLOB_PATTERN = os.path.join(RESULTS_DIR, "result_k*_theta*_S*_IT*.npz")
+GLOB_PATTERN = os.path.join(RESULTS_DIR, "result_CL_k*_theta*_S*_IT*.npz")
 
 # ---------------------------------------------------------------------------
 # Load all result files
@@ -97,7 +97,7 @@ for idx, ((theta, S, IT, n_sims), pairs) in enumerate(sorted(data_by_group.items
         k_arr, fp_norm,
         marker + "-",
         color=color,
-        label=f"$\\theta={theta}$,  $S={S}$",
+        label=f"$\\theta={theta}$,  $S={S}$,  IT={IT:,},  $n_{{sims}}={n_sims:,}$",
     )
 
 ax.set_xlabel("Interaction strength parameter $k$")
@@ -105,7 +105,7 @@ ax.set_ylabel("Proportion of distinct outcomes\n(Number of FP / $n_{sims}$)")
 ax.set_title("Ecological Multi-stability in Lotka–Volterra Model")
 
 ax.set_ylim(bottom=0)
-ax.legend(framealpha=0.9, edgecolor="grey")
+ax.legend(framealpha=0.9, edgecolor="grey", loc="upper right")
 ax.grid(True, alpha=0.3, linestyle="--")
 
 for spine in ax.spines.values():

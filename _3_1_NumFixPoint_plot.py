@@ -77,7 +77,7 @@ ax.set_xlabel("Interaction strength parameter $k$")
 ax.set_ylabel("Proportion of distinct outcomes\n(Number of FP / $n_{sims}$)")
 ax.set_title(
     f"Ecological Multi-stability in Lotka–Volterra Model\n"
-    f"$\\theta={theta}$,  $S={N_species}$,  IT={iterations:,}"
+    f"$\\theta={theta}$,  $S={N_species}$,  IT={iterations:,},  $n_{{sims}}={n_sims:,}$"
 )
 
 ax.set_ylim(bottom=0)
