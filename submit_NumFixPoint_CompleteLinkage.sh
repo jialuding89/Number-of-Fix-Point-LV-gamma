@@ -50,15 +50,16 @@ fi
 # ---------------------------------------------------------------------------
 # Parameter grid
 # ---------------------------------------------------------------------------
-K_VALUES=(0.1 0.42 0.74 1.05 1.37 1.68 2.0 2.32 2.63 2.95 \
-          3.26 3.58 3.89 4.21 4.53 4.84 5.16 5.47 5.79 6.0)
+K_VALUES=(0.01 0.5 1.0 1.5 1.6 1.7 1.8 1.9 2.0 2.5 \
+          #3.26 3.58 3.89 4.21 4.53 4.84 5.16 5.47 5.79 6.0
+          )
 
 THETA_VALUES=(0.16)
 
 # Fixed simulation parameters
-S=500
-IT=100000
-N_SIMS=1000           # Keep low for Complete Linkage — O(n_sims^2) memory
+S=2000 #same to parameters from Niek
+IT=100_000
+N_SIMS=50           # Keep low for Complete Linkage — O(n_sims^2) memory
 
 # ---------------------------------------------------------------------------
 # Resolve (k, theta) for this array task
