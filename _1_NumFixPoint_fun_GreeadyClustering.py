@@ -43,7 +43,7 @@ def simulate_trajectories(k_val, theta, N_species, n_sims, iterations, dt=0.01):
     return N
 
 
-def count_distinct_attractors(final_states, d2_threshold=1e-2):
+def count_distinct_attractors(final_states, N_species, d2_threshold=1e-2):
     """
     Count the number of distinct fixed-point attractors using greedy clustering.
 
@@ -71,12 +71,14 @@ def count_distinct_attractors(final_states, d2_threshold=1e-2):
 
     centroids = [final_states[0]]
     counts    = [1]
+    sqrt_N    = np.sqrt(N_species) # 提前算好，省点开销
 
     for state in final_states[1:]:
-        dists = np.array([np.linalg.norm(state - c) for c in centroids])
-        nearest = int(np.argmin(dists))
+        # 每一个距离都除以 sqrt_N
+        dists = np.array([np.linalg.norm(state - c) / sqrt_N for c in centroids])
+
+        nearest = int(np.argmin(dists)) # 找到距离最近的那个质心的索引
         if dists[nearest] < d2_threshold:
-            # Update centroid as running average
             counts[nearest] += 1
             centroids[nearest] = (
                 centroids[nearest] + (state - centroids[nearest]) / counts[nearest]

@@ -16,12 +16,13 @@ from _1_NumFixPoint_fun_CompleteLinkage import simulate_trajectories, count_dist
 # ---------------------------------------------------------------------------
 # Simulation parameters
 # ---------------------------------------------------------------------------
-N_species  = 500          # total number of species  (S)
-n_sims     = 1_000      # number of independent initial conditions per k value
-iterations = 50_000     # total number of Euler integration steps (IT)
+N_species  = 80          # total number of species  (S)
+n_sims     = 50      # number of independent initial conditions per k value
+iterations = 10_000_000     # total number of Euler integration steps (IT)
 theta      = 0.16        # fixed scale parameter of the Gamma distribution
 
-k_values = np.linspace(0.001, 6.0, 20)   # k values to sweep
+k_values = np.linspace(0.001, 4.0, 20)   # k values to sweep
+#k_values = (0.01, 0.5, 1.0, 1.5, 1.6, 1.7, 1.8, 1.9, 2.0, 2.5)
 
 # ---------------------------------------------------------------------------
 # Run simulations
@@ -38,7 +39,7 @@ for k in tqdm(k_values):
     final_N = simulate_trajectories(k, theta, N_species, n_sims, iterations)
 
     # Count distinct attractors using the d2 criterion
-    num_fp = count_distinct_attractors(final_N)
+    num_fp = count_distinct_attractors(final_N, N_species)
     results.append(num_fp)
 
 results = np.array(results)

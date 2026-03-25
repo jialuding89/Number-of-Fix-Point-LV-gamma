@@ -45,7 +45,7 @@ def simulate_trajectories(k_val, theta, N_species, n_sims, iterations, dt=0.01):
     return N
 
 
-def count_distinct_attractors(final_states, d2_threshold=1e-2):
+def count_distinct_attractors(final_states, N_species, d2_threshold=1e-2):
     """
     Count the number of distinct fixed-point attractors using complete-linkage
     hierarchical clustering.
@@ -77,13 +77,9 @@ def count_distinct_attractors(final_states, d2_threshold=1e-2):
     if len(final_states) == 1:
         return 1
 
-    # Compute all pairwise Euclidean distances (condensed form)
-    dist_condensed = pdist(final_states, metric="euclidean")
+    # 直接用传入的 N_species 缩放
+    dist_condensed = pdist(final_states, metric="euclidean") / np.sqrt(N_species)
 
-    # Complete linkage hierarchical clustering
     Z = linkage(dist_condensed, method="complete")
-
-    # Cut dendrogram at d2_threshold
     labels = fcluster(Z, t=d2_threshold, criterion="distance")
-
     return int(np.max(labels))

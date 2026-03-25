@@ -39,7 +39,7 @@ print(
 # Simulate & count
 # ---------------------------------------------------------------------------
 final_N = simulate_trajectories(k_val, theta, N_species, n_sims, iterations)
-num_fp  = count_distinct_attractors(final_N)
+num_fp  = count_distinct_attractors(final_N, N_species)
 
 print(f"Number of distinct fixed points: {num_fp}")
 
